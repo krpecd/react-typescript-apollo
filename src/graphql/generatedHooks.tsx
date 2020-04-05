@@ -541,7 +541,7 @@ export type PostsQuery = (
     { __typename?: 'PostsPage' }
     & { data?: Maybe<Array<Maybe<(
       { __typename?: 'Post' }
-      & Pick<Post, 'id'>
+      & Pick<Post, 'id' | 'title' | 'body'>
     )>>> }
   )> }
 );
@@ -581,9 +581,11 @@ export type CreatePostMutationResult = ApolloReactCommon.MutationResult<CreatePo
 export type CreatePostMutationOptions = ApolloReactCommon.BaseMutationOptions<CreatePostMutation, CreatePostMutationVariables>;
 export const PostsDocument = gql`
     query posts {
-  posts {
+  posts(options: {paginate: {page: 1, limit: 10}}) {
     data {
       id
+      title
+      body
     }
   }
 }

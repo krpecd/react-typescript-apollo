@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import ExampleQueryContainer from './components/ExampleQuery';
+import PostsContainer from './components/Posts';
 import ExampleMutationContainer from './components/ExampleMutation';
+import { AppBar, Toolbar, Container, ButtonGroup, Button } from '@material-ui/core';
 
 const client = new ApolloClient({
   uri: 'https://graphqlzero.almansi.me/api', // online playground is accessible on this url
@@ -28,8 +23,7 @@ function App() {
         </Toolbar>
       </AppBar>
       <Container maxWidth="md" style={{paddingTop: '150px'}}>
-        <Typography variant="h1">Apollo react app </Typography>
-        {page === 'query' && <ExampleQueryContainer />}
+        {page === 'query' && <PostsContainer />}
         {page === 'mutation' && <ExampleMutationContainer />}
       </Container>
     </ApolloProvider>
