@@ -1,0 +1,15 @@
+overwrite: true
+schema: "https://graphqlzero.almansi.me/api"
+documents: #specify in which files you want to search for queries and mutations 
+  - './src/components/**/*.{ts,tsx}'
+  - './src/views/**/*.{ts,tsx}'
+generates:
+  src/graphql/generatedHooks.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+    config:
+      withComponent: false
+      withHOC: false
+      withHooks: true

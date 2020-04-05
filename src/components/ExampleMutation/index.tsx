@@ -1,18 +1,9 @@
 import React from 'react'
 import ExampleMutation from './ExampleMutation'
-import { gql } from 'apollo-boost'
-import { useMutation } from '@apollo/react-hooks'
-
-const MUTATION = gql`
-  mutation createPost($input: CreatePostInput!) {
-    createPost (input: $input) {
-      id
-    }
-  }
-`
+import { useCreatePostMutation } from '../../graphql/generatedHooks'
 
 const ExampleMutationContainer = () => {
-  const [createPost] = useMutation(MUTATION) 
+  const [createPost] = useCreatePostMutation() 
   console.log("ExampleMutationContainer -> createPost", createPost)
 
   return (
